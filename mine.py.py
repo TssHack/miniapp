@@ -1,6 +1,7 @@
+#import logging
 from aiogram import Bot, Dispatcher, types
 from aiogram.types import InlineKeyboardMarkup, InlineKeyboardButton, WebAppInfo
-from aiogram.utils import executor
+import asyncio
 
 # توکن ربات را اینجا جایگذاری کنید
 TOKEN = "7187032756:AAFB05e5mez9oz2UbAssDN6mC6ZPj2UM3UU"
@@ -11,6 +12,9 @@ dp = Dispatcher(bot)
 
 # لینک مینی اپ (لینک صفحه HTML مینی اپ)
 WEB_APP_URL = "https://miniapp-olive.vercel.app"
+
+# راه‌اندازی logging
+#logging.basicConfig(level=logging.INFO)
 
 @dp.message_handler(commands=['start'])
 async def send_welcome(message: types.Message):
@@ -52,5 +56,9 @@ async def handle_location(message: types.Message):
     location = message.location
     await message.answer(f"📍 موقعیت شما: طول: {location.longitude}, عرض: {location.latitude}")
 
+async def main():
+    # شروع به کار ربات
+    await dp.start_polling()
+
 if __name__ == '__main__':
-    executor.start_polling(dp, skip_updates=True)
+    asyncio.run(main())
