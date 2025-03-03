@@ -1,0 +1,64 @@
+@import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;500;700&display=swap');
+
+body {
+    font-family: 'Vazirmatn', sans-serif;
+    text-align: center;
+    background-color: var(--tg-theme-bg-color, #121212);
+    color: var(--tg-theme-text-color, #ffffff);
+    direction: rtl;
+    padding: 20px;
+    transition: background 0.5s ease, color 0.5s ease;
+}
+
+.container {
+    max-width: 450px;
+    margin: auto;
+    background: var(--tg-theme-secondary-bg-color, rgba(0, 0, 0, 0.8));
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0px 0px 15px rgba(255, 255, 255, 0.1);
+    
+    /* افکت نرم هنگام بالا آمدن */
+    opacity: 0;
+    transform: translateY(50px);
+    animation: fadeInUp 1s ease-out forwards;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.avatar {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    margin-bottom: 15px;
+    border: 3px solid var(--tg-theme-hint-color, white);
+}
+
+h2 { color: var(--tg-theme-link-color, #00bcd4); }
+.bio { font-size: 14px; margin-bottom: 20px; }
+
+.links { display: flex; flex-direction: column; gap: 10px; }
+.btn {
+    display: block;
+    padding: 12px;
+    background: var(--tg-theme-button-color, #008c9e);
+    color: var(--tg-theme-button-text-color, white);
+    text-decoration: none;
+    border-radius: 10px;
+    transition: transform 0.3s ease, background 0.3s ease;
+    font-weight: bold;
+}
+
+.btn:hover {
+    transform: scale(1.1);
+    background: var(--tg-theme-button-hover-color, #00bcd4);
+}
