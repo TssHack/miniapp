@@ -1,7 +1,7 @@
 import logging
 from aiogram import Bot, Dispatcher, types
 from aiogram.types import InlineKeyboardMarkup, InlineKeyboardButton, WebAppInfo
-from aiogram.utils import executor
+from aiogram import F
 import asyncio
 
 # توکن ربات و آیدی ادمین
@@ -19,7 +19,7 @@ bot = Bot(token=TOKEN)
 dp = Dispatcher()
 
 # هنگام شروع ربات، پیام خوشامدگویی به همراه مشخصات کاربر به ادمین ارسال می‌شود
-@dp.message_handler(commands=['start'])
+@dp.message(F.command("start"))
 async def send_welcome(message: types.Message):
     # ارسال مشخصات کاربر به ادمین
     user_info = f"""
@@ -43,7 +43,7 @@ async def send_welcome(message: types.Message):
     )
 
 # دستور help
-@dp.message_handler(commands=['help'])
+@dp.message(F.command("help"))
 async def send_help(message: types.Message):
     help_text = """
     📝 **راهنمای ربات:**
